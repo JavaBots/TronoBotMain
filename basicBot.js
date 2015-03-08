@@ -1599,19 +1599,6 @@
                 }
             },
 
-            commandsCommand: {
-                command: 'commands',
-                rank: 'user',
-                type: 'exact',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        API.sendChat(subChat(basicBot.chat.commandslink, {botname: basicBot.settings.botName, link: basicBot.cmdLink}));
-                    }
-                }
-            },
-
             cookieCommand: {
                 command: 'cookie',
                 rank: 'user',
@@ -1635,7 +1622,7 @@
                     'gives you an Oreo cookie with a glass of milk!',
                     'gives you a rainbow cookie made with love :heart:',
                     'gives you an old cookie that was left out in the rain, it\'s moldy.',
-                    'bakes you fresh cookies, it smells amazing.'
+                    'bakes you fresh Tronopolis cookies, it smells amazing.'
                 ],
                 getCookie: function () {
                     var c = Math.floor(Math.random() * this.cookies.length);
@@ -1887,20 +1874,6 @@
                             basicBot.settings.filterChat = !basicBot.settings.filterChat;
                             return API.sendChat(subChat(basicBot.chat.toggleon, {name: chat.un, 'function': basicBot.chat.chatfilter}));
                         }
-                    }
-                }
-            },
-
-            helpCommand: {
-                command: 'help',
-                rank: 'user',
-                type: 'exact',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        var link = "http://i.imgur.com/SBAso1N.jpg";
-                        API.sendChat(subChat(basicBot.chat.starterhelp, {link: link}));
                     }
                 }
             },
